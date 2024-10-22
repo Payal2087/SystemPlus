@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.7.9 on win32)" generated="20241022 21:05:56.289" rpa="false" schemaversion="4">
+<suite id="s1" name="Test Cases" source="C:\Users\payhin1\.ms-ad\Desktop\Bright_Horizons\Test_Cases">
+<suite id="s1-s1" name="Bright Horizons Center Search" source="C:\Users\payhin1\.ms-ad\Desktop\Bright_Horizons\Test_Cases\Bright_Horizons_Center_Search.robot">
+<test id="s1-s1-t1" name="Bright Horizons New York Center Search" line="10">
+<kw name="Launch Application" library="Generic_Keywords">
+<arg>${URL}</arg>
+<arg>${Browser}</arg>
+<doc>*Keyword Description*:Keyword is used to Launch portal application</doc>
+<kw name="Select Browser" library="Generic_Keywords">
+<arg>${Browser}</arg>
+<arg>${URL}</arg>
+<doc>*Keyword Description*:Keyword can be used to select browser at execution time</doc>
+<if>
+<branch type="IF" condition="'${browser_option}'=='Firefox'">
+<kw name="Launch Firefox Browser" library="Generic_Keywords">
+<arg>${URL}</arg>
+<doc>*Keyword Description*:Keyword can be used to open Firefox browser</doc>
+<status status="NOT RUN" starttime="20241022 21:05:56.586" endtime="20241022 21:05:56.586"/>
+</kw>
+<status status="NOT RUN" starttime="20241022 21:05:56.586" endtime="20241022 21:05:56.586"/>
+</branch>
+<branch type="ELSE IF" condition="'${browser_option}'=='Chrome'">
+<kw name="Launch Chrome Browser" library="Generic_Keywords">
+<arg>${URL}</arg>
+<kw name="Get Chromedriver Path" library="Webdriversync">
+<var>${chromedriver_path}</var>
+<msg timestamp="20241022 21:05:56.586" level="INFO">====== WebDriver manager ======</msg>
+<msg timestamp="20241022 21:05:58.140" level="INFO">Get LATEST chromedriver version for google-chrome</msg>
+<msg timestamp="20241022 21:05:58.255" level="INFO">Get LATEST chromedriver version for google-chrome</msg>
+<msg timestamp="20241022 21:05:58.356" level="INFO">Driver [C:\Users\payhin1\.wdm\drivers\chromedriver\win64\129.0.6668.100\chromedriver-win32/THIRD_PARTY_NOTICES.chromedriver] found in cache</msg>
+<msg timestamp="20241022 21:05:58.356" level="INFO">C:\Users\payhin1\.wdm\drivers\chromedriver\win64\129.0.6668.100\chromedriver-win32\chromedriver.exe</msg>
+<msg timestamp="20241022 21:05:58.356" level="INFO">${chromedriver_path} = C:\Users\payhin1\.wdm\drivers\chromedriver\win64\129.0.6668.100\chromedriver-win32\chromedriver.exe</msg>
+<status status="PASS" starttime="20241022 21:05:56.586" endtime="20241022 21:05:58.356"/>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>Chrome</arg>
+<arg>executable_path=${chromedriver_path}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20241022 21:05:58.356" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20241022 21:05:58.356" endtime="20241022 21:05:59.720"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20241022 21:05:59.721" level="INFO">Opening url 'https://www.brighthorizons.com/'</msg>
+<status status="PASS" starttime="20241022 21:05:59.720" endtime="20241022 21:06:10.024"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20241022 21:06:10.024" endtime="20241022 21:06:10.098"/>
+</kw>
+<status status="PASS" starttime="20241022 21:05:56.586" endtime="20241022 21:06:10.099"/>
+</kw>
+<status status="PASS" starttime="20241022 21:05:56.586" endtime="20241022 21:06:10.099"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Browser not mentioned</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20241022 21:06:10.099" endtime="20241022 21:06:10.099"/>
+</kw>
+<status status="NOT RUN" starttime="20241022 21:06:10.099" endtime="20241022 21:06:10.099"/>
+</branch>
+<status status="PASS" starttime="20241022 21:05:56.586" endtime="20241022 21:06:10.099"/>
+</if>
+<status status="PASS" starttime="20241022 21:05:56.586" endtime="20241022 21:06:10.100"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${Bool}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${Find_Center}</arg>
+<arg>timeout=10s</arg>
+<arg>error=Page is not visible after 10 seconds</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${Find_Center}</arg>
+<arg>timeout=10s</arg>
+<arg>error=Page is not visible after 10 seconds</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20241022 21:06:10.101" endtime="20241022 21:06:10.205"/>
+</kw>
+<msg timestamp="20241022 21:06:10.206" level="INFO">${Bool} = True</msg>
+<status status="PASS" starttime="20241022 21:06:10.100" endtime="20241022 21:06:10.206"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${Bool}'== 'True'</arg>
+<arg>log</arg>
+<arg>${\n}Application Login Successfully</arg>
+<arg>ELSE</arg>
+<arg>log</arg>
+<arg>${\n}Application Login Failed</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Log" library="BuiltIn">
+<arg>${\n}Application Login Successfully</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20241022 21:06:10.207" level="INFO">
+Application Login Successfully</msg>
+<status status="PASS" starttime="20241022 21:06:10.206" endtime="20241022 21:06:10.207"/>
+</kw>
+<status status="PASS" starttime="20241022 21:06:10.206" endtime="20241022 21:06:10.207"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${Bool}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>//div/button[text()='Accept All']</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//div/button[text()='Accept All']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20241022 21:06:10.207" endtime="20241022 21:06:10.285"/>
+</kw>
+<msg timestamp="20241022 21:06:10.285" level="INFO">${Bool} = True</msg>
+<status status="PASS" starttime="20241022 21:06:10.207" endtime="20241022 21:06:10.285"/>
+</kw>
+<if>
+<branch type="IF" condition="${Bool}==True">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//div/button[text()='Accept All']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20241022 21:06:10.285" level="INFO">Clicking button '//div/button[text()='Accept All']'.</msg>
+<status status="PASS" starttime="20241022 21:06:10.285" endtime="20241022 21:06:10.418"/>
+</kw>
+<status status="PASS" starttime="20241022 21:06:10.285" endtime="20241022 21:06:10.418"/>
+</branch>
+<status status="PASS" starttime="20241022 21:06:10.285" endtime="20241022 21:06:10.418"/>
+</if>
+<status status="PASS" starttime="20241022 21:05:56.586" endtime="20241022 21:06:10.418"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20241022 21:06:10.418" endtime="20241022 21:06:10.460"/>
+</kw>
+<kw name="Find_Center">
+<arg>New York</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${Find_Center}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20241022 21:06:10.460" endtime="20241022 21:06:10.476"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Find_Center}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241022 21:06:10.476" level="INFO">Clicking element '(//a[@href='https://www.brighthorizons.com/child-care-locator'])[4]'.</msg>
+<status status="PASS" starttime="20241022 21:06:10.476" endtime="20241022 21:06:24.557"/>
+</kw>
+<kw name="Get Location" library="SeleniumLibrary">
+<var>${current_url}</var>
+<doc>Returns the current browser window URL.</doc>
+<msg timestamp="20241022 21:06:24.577" level="INFO">${current_url} = https://www.brighthorizons.com/child-care-locator</msg>
+<status status="PASS" starttime="20241022 21:06:24.558" endtime="20241022 21:06:24.578"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${current_url}</arg>
+<arg>${Locator_URL}</arg>
+<arg>error=URL doesnot contain '/child-care-locator'</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20241022 21:06:24.578" endtime="20241022 21:06:24.578"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${Location_Search}</arg>
+<arg>${Search_Center}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241022 21:06:24.579" level="INFO">Typing text 'New York' into text field '//form/div/div[1]/input[@name="addressInput"]'.</msg>
+<status status="PASS" starttime="20241022 21:06:24.578" endtime="20241022 21:06:24.690"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241022 21:06:26.705" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241022 21:06:24.690" endtime="20241022 21:06:26.706"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${Location_Search}</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20241022 21:06:26.711" level="INFO">Sending key(s) ('ENTER',) to //form/div/div[1]/input[@name="addressInput"] element.</msg>
+<msg timestamp="20241022 21:06:27.045" level="INFO">Pressing special key ENTER to element.</msg>
+<msg timestamp="20241022 21:06:27.045" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20241022 21:06:26.707" endtime="20241022 21:06:27.054"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${Center_List_Count}</arg>
+<arg>timeout=10s</arg>
+<arg>error=Center Count is not available</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20241022 21:06:27.054" endtime="20241022 21:06:28.772"/>
+</kw>
+<kw name="Get Element Count" library="SeleniumLibrary">
+<var>${centers_list}</var>
+<arg>${Center_List_Count}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<msg timestamp="20241022 21:06:28.790" level="INFO">${centers_list} = 20</msg>
+<status status="PASS" starttime="20241022 21:06:28.772" endtime="20241022 21:06:28.790"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${centers_count}</var>
+<arg>${Center_count}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20241022 21:06:28.813" level="INFO">${centers_count} = 20</msg>
+<status status="PASS" starttime="20241022 21:06:28.790" endtime="20241022 21:06:28.813"/>
+</kw>
+<kw name="Convert To Integer" library="BuiltIn">
+<var>${centers_count}</var>
+<arg>${centers_count}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<msg timestamp="20241022 21:06:28.813" level="INFO">${centers_count} = 20</msg>
+<status status="PASS" starttime="20241022 21:06:28.813" endtime="20241022 21:06:28.813"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${centers_list}</arg>
+<arg>${centers_count}</arg>
+<arg>msg=Center Count is not maching with the dispalyed centers</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20241022 21:06:28.813" endtime="20241022 21:06:28.814"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${first_center_name}</var>
+<arg>${First_Center_Name}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20241022 21:06:28.830" level="INFO">${first_center_name} = Bright Horizons at TriBeCa</msg>
+<status status="PASS" starttime="20241022 21:06:28.814" endtime="20241022 21:06:28.830"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${first_center_address}</var>
+<arg>${First_Center_Address}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20241022 21:06:28.840" level="INFO">${first_center_address} = 129 Hudson Street New York, NY 10013</msg>
+<status status="PASS" starttime="20241022 21:06:28.830" endtime="20241022 21:06:28.840"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241022 21:06:30.845" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241022 21:06:28.840" endtime="20241022 21:06:30.845"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${Result_List}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20241022 21:06:30.845" endtime="20241022 21:06:30.859"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Result_List}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241022 21:06:30.874" level="INFO">Clicking element '//div[3]/div[2][contains(@class,'centerResult')]'.</msg>
+<status status="PASS" starttime="20241022 21:06:30.859" endtime="20241022 21:06:31.001"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${First_Center_Name_Popup}</arg>
+<arg>timeout=20s</arg>
+<arg>error=Pop up is not getting displyed for Center Information</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20241022 21:06:31.001" endtime="20241022 21:06:31.018"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${popup_center_name}</var>
+<arg>${First_Center_Name_Popup}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20241022 21:06:31.023" level="INFO">${popup_center_name} = Bright Horizons at TriBeCa</msg>
+<status status="PASS" starttime="20241022 21:06:31.019" endtime="20241022 21:06:31.023"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${popup_center_address}</var>
+<arg>${First_Center_Address_Popup}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20241022 21:06:31.057" level="INFO">${popup_center_address} = 129 Hudson Street
+New York, NY 10013</msg>
+<status status="PASS" starttime="20241022 21:06:31.023" endtime="20241022 21:06:31.057"/>
+</kw>
+<kw name="Replace String" library="String">
+<var>${popup_center_address}</var>
+<arg>${popup_center_address}</arg>
+<arg>\n</arg>
+<arg>${SPACE}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20241022 21:06:31.057" level="INFO">${popup_center_address} = 129 Hudson Street New York, NY 10013</msg>
+<status status="PASS" starttime="20241022 21:06:31.057" endtime="20241022 21:06:31.057"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${first_center_name}</arg>
+<arg>${popup_center_name}</arg>
+<arg>msg=First center name is not getting match with First Center name on displayed pop up</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20241022 21:06:31.057" endtime="20241022 21:06:31.057"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${first_center_address}</arg>
+<arg>${popup_center_address}</arg>
+<arg>msg=First center address is not getting match with First Center address on displayed pop up</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20241022 21:06:31.057" endtime="20241022 21:06:31.057"/>
+</kw>
+<status status="PASS" starttime="20241022 21:06:10.460" endtime="20241022 21:06:31.057"/>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20241022 21:06:31.057" endtime="20241022 21:06:33.342"/>
+</kw>
+<doc>Automate Bright Horizons New York Center Search</doc>
+<status status="PASS" starttime="20241022 21:05:56.586" endtime="20241022 21:06:33.342"/>
+</test>
+<status status="PASS" starttime="20241022 21:05:56.488" endtime="20241022 21:06:33.342"/>
+</suite>
+<suite id="s1-s2" name="Search functionality" source="C:\Users\payhin1\.ms-ad\Desktop\Bright_Horizons\Test_Cases\Search_functionality.robot">
+<test id="s1-s2-t1" name="Verify search functionality" line="9">
+<kw name="Launch Application" library="Generic_Keywords">
+<arg>${URL}</arg>
+<arg>${Browser}</arg>
+<doc>*Keyword Description*:Keyword is used to Launch portal application</doc>
+<kw name="Select Browser" library="Generic_Keywords">
+<arg>${Browser}</arg>
+<arg>${URL}</arg>
+<doc>*Keyword Description*:Keyword can be used to select browser at execution time</doc>
+<if>
+<branch type="IF" condition="'${browser_option}'=='Firefox'">
+<kw name="Launch Firefox Browser" library="Generic_Keywords">
+<arg>${URL}</arg>
+<doc>*Keyword Description*:Keyword can be used to open Firefox browser</doc>
+<status status="NOT RUN" starttime="20241022 21:06:33.388" endtime="20241022 21:06:33.388"/>
+</kw>
+<status status="NOT RUN" starttime="20241022 21:06:33.388" endtime="20241022 21:06:33.388"/>
+</branch>
+<branch type="ELSE IF" condition="'${browser_option}'=='Chrome'">
+<kw name="Launch Chrome Browser" library="Generic_Keywords">
+<arg>${URL}</arg>
+<kw name="Get Chromedriver Path" library="Webdriversync">
+<var>${chromedriver_path}</var>
+<msg timestamp="20241022 21:06:33.388" level="INFO">====== WebDriver manager ======</msg>
+<msg timestamp="20241022 21:06:34.961" level="INFO">Get LATEST chromedriver version for google-chrome</msg>
+<msg timestamp="20241022 21:06:35.045" level="INFO">Get LATEST chromedriver version for google-chrome</msg>
+<msg timestamp="20241022 21:06:35.161" level="INFO">Driver [C:\Users\payhin1\.wdm\drivers\chromedriver\win64\129.0.6668.100\chromedriver-win32/THIRD_PARTY_NOTICES.chromedriver] found in cache</msg>
+<msg timestamp="20241022 21:06:35.161" level="INFO">C:\Users\payhin1\.wdm\drivers\chromedriver\win64\129.0.6668.100\chromedriver-win32\chromedriver.exe</msg>
+<msg timestamp="20241022 21:06:35.161" level="INFO">${chromedriver_path} = C:\Users\payhin1\.wdm\drivers\chromedriver\win64\129.0.6668.100\chromedriver-win32\chromedriver.exe</msg>
+<status status="PASS" starttime="20241022 21:06:33.388" endtime="20241022 21:06:35.161"/>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>Chrome</arg>
+<arg>executable_path=${chromedriver_path}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20241022 21:06:35.161" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20241022 21:06:35.161" endtime="20241022 21:06:36.483"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20241022 21:06:36.483" level="INFO">Opening url 'https://www.brighthorizons.com/'</msg>
+<status status="PASS" starttime="20241022 21:06:36.483" endtime="20241022 21:06:43.488"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20241022 21:06:43.489" endtime="20241022 21:06:43.555"/>
+</kw>
+<status status="PASS" starttime="20241022 21:06:33.388" endtime="20241022 21:06:43.555"/>
+</kw>
+<status status="PASS" starttime="20241022 21:06:33.388" endtime="20241022 21:06:43.555"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Browser not mentioned</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20241022 21:06:43.556" endtime="20241022 21:06:43.556"/>
+</kw>
+<status status="NOT RUN" starttime="20241022 21:06:43.555" endtime="20241022 21:06:43.556"/>
+</branch>
+<status status="PASS" starttime="20241022 21:06:33.388" endtime="20241022 21:06:43.556"/>
+</if>
+<status status="PASS" starttime="20241022 21:06:33.388" endtime="20241022 21:06:43.556"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${Bool}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${Find_Center}</arg>
+<arg>timeout=10s</arg>
+<arg>error=Page is not visible after 10 seconds</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${Find_Center}</arg>
+<arg>timeout=10s</arg>
+<arg>error=Page is not visible after 10 seconds</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20241022 21:06:43.557" endtime="20241022 21:06:43.660"/>
+</kw>
+<msg timestamp="20241022 21:06:43.660" level="INFO">${Bool} = True</msg>
+<status status="PASS" starttime="20241022 21:06:43.556" endtime="20241022 21:06:43.660"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${Bool}'== 'True'</arg>
+<arg>log</arg>
+<arg>${\n}Application Login Successfully</arg>
+<arg>ELSE</arg>
+<arg>log</arg>
+<arg>${\n}Application Login Failed</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Log" library="BuiltIn">
+<arg>${\n}Application Login Successfully</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20241022 21:06:43.661" level="INFO">
+Application Login Successfully</msg>
+<status status="PASS" starttime="20241022 21:06:43.661" endtime="20241022 21:06:43.661"/>
+</kw>
+<status status="PASS" starttime="20241022 21:06:43.660" endtime="20241022 21:06:43.661"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${Bool}</var>
+<arg>Wait Until Element Is Visible</arg>
+<arg>//div/button[text()='Accept All']</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//div/button[text()='Accept All']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20241022 21:06:43.661" endtime="20241022 21:06:43.703"/>
+</kw>
+<msg timestamp="20241022 21:06:43.703" level="INFO">${Bool} = True</msg>
+<status status="PASS" starttime="20241022 21:06:43.661" endtime="20241022 21:06:43.703"/>
+</kw>
+<if>
+<branch type="IF" condition="${Bool}==True">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//div/button[text()='Accept All']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20241022 21:06:43.703" level="INFO">Clicking button '//div/button[text()='Accept All']'.</msg>
+<status status="PASS" starttime="20241022 21:06:43.703" endtime="20241022 21:06:43.848"/>
+</kw>
+<status status="PASS" starttime="20241022 21:06:43.703" endtime="20241022 21:06:43.848"/>
+</branch>
+<status status="PASS" starttime="20241022 21:06:43.703" endtime="20241022 21:06:43.848"/>
+</if>
+<status status="PASS" starttime="20241022 21:06:33.388" endtime="20241022 21:06:43.848"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20241022 21:06:43.848" endtime="20241022 21:06:43.871"/>
+</kw>
+<kw name="Search_Page_Validation">
+<arg>Employee Education in 2018: Strategies to Watch</arg>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${Search}</arg>
+<arg>timeout=10s</arg>
+<arg>error=search button is not visible in 20s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20241022 21:06:43.871" endtime="20241022 21:06:43.904"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Search}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20241022 21:06:43.904" level="INFO">Clicking element '(//span[contains(@class,'icon-search bhc-icon-search-rounded')])[4]'.</msg>
+<status status="PASS" starttime="20241022 21:06:43.904" endtime="20241022 21:06:44.268"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20241022 21:06:46.272" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20241022 21:06:44.268" endtime="20241022 21:06:46.273"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${Search_Field}</arg>
+<arg>timeout=10s</arg>
+<arg>error=search filed is not available</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20241022 21:06:46.273" endtime="20241022 21:06:46.333"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${Search_Field}</arg>
+<arg>msg=search filed is not available</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20241022 21:06:46.366" level="INFO">Element '(//input[@placeholder='Type to Search'])[2]' is displayed.</msg>
+<status status="PASS" starttime="20241022 21:06:46.333" endtime="20241022 21:06:46.366"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${Search_Field}</arg>
+<arg>${Search_Text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20241022 21:06:46.367" level="INFO">Typing text 'Employee Education in 2018: Strategies to Watch' into text field '(//input[@placeholder='Type to Search'])[2]'.</msg>
+<status status="PASS" starttime="20241022 21:06:46.366" endtime="20241022 21:06:46.512"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${Search_Button}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20241022 21:06:46.512" level="INFO">Clicking button '(//button[@type='submit'][text()='Search'])[2]'.</msg>
+<status status="PASS" starttime="20241022 21:06:46.512" endtime="20241022 21:06:51.596"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${Search_Result}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20241022 21:06:51.597" endtime="20241022 21:06:51.614"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${Search_result}</var>
+<arg>(//h3[@class='title'])[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20241022 21:06:51.638" level="INFO">${Search_result} = Employee Education in 2018: Strategies to Watch</msg>
+<status status="PASS" starttime="20241022 21:06:51.614" endtime="20241022 21:06:51.638"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${Search_result}</arg>
+<arg>${Search_Text}</arg>
+<arg>msg=search result is not matches with the search text entered</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20241022 21:06:51.638" endtime="20241022 21:06:51.639"/>
+</kw>
+<status status="PASS" starttime="20241022 21:06:43.871" endtime="20241022 21:06:51.639"/>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20241022 21:06:51.639" endtime="20241022 21:06:53.921"/>
+</kw>
+<status status="PASS" starttime="20241022 21:06:33.388" endtime="20241022 21:06:53.921"/>
+</test>
+<status status="PASS" starttime="20241022 21:06:33.342" endtime="20241022 21:06:53.921"/>
+</suite>
+<status status="PASS" starttime="20241022 21:05:56.289" endtime="20241022 21:06:53.936"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" skip="0" id="s1" name="Test Cases">Test Cases</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Bright Horizons Center Search">Test Cases.Bright Horizons Center Search</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s2" name="Search functionality">Test Cases.Search functionality</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
