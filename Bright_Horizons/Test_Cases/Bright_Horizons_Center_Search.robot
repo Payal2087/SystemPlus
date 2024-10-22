@@ -27,13 +27,13 @@ Find_Center
     Input Text    ${Location_Search}    ${Search_Center}
     sleep    2s
     Press Keys    ${Location_Search}    ENTER
-    # Step 5: Verify number of centers matches the list
+    #Verify number of centers matches the list
     Wait Until Page Contains Element    ${Center_List_Count}    timeout=10s    error=Center Count is not available
     ${centers_list}=    Get Element Count    ${Center_List_Count}
     ${centers_count}=    Get Text    ${Center_count}
     ${centers_count}=    Convert To Integer    ${centers_count}
     Should Be Equal    ${centers_list}    ${centers_count}    msg=Center Count is not maching with the dispalyed centers
-    # Step 6: Click on the first center and verify name and address
+    # Click on the first center and verify name and address
     ${first_center_name}=    Get Text    ${First_Center_Name}
     ${first_center_address}=    Get Text    ${First_Center_Address}
     sleep    2s
